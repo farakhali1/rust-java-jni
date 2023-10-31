@@ -1,6 +1,6 @@
 java/adder.h
 java/adder.class
-tests/test_java.h
-tests/test_java.class
+tests/*.h
+tests/*.class
 rust/adder/target/
 rust/adder/Cargo.lock
