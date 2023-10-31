@@ -4,7 +4,14 @@ import java.nio.file.Paths;
 class adder {
 
   // load rust dynamic library with the name adder (libadder.so)
-  static { System.loadLibrary("adder"); }
+
+  static {
+    Path p = Paths.get("./../rust/adder/target/debug/libadder.so");
+    System.load(p.toAbsolutePath().toString());
+  }
+
+  // need to provide path using cli
+  // static { System.loadLibrary("adder"); }
 
   // calling rust library adder function, native keyword means that this
   // function is implemented using JNI
@@ -15,9 +22,9 @@ class adder {
     int number_2 = 4;
 
     // call java functions
+    adder.callback("java");
     System.out.println("Sum of " + number_1 + " + " + number_2 + " = " +
                        adder.add_numbers_java(number_1, number_2));
-    adder.callback("java");
 
     // call rust functions
     System.out.println("Sum of " + number_1 + " + " + number_2 + " = " +
